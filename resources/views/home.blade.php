@@ -1,25 +1,9 @@
+<h1>Customers</h1>
 
+<ul>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+    @foreach($customer1 as $customer)
+        <li>{{ $customer }}</li>
+    @endforeach
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <a href="/questionnaires" class="btn btn-dark">Create New Questionnaire</a>
-                </div>
-            </div>
-
-            
-        </div>
-    </div>
-</div>
-@endsection
+</ul>

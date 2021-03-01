@@ -8,6 +8,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+
+        $customers = [
+            'John Doe',
+            'Jane Doe',
+            'Bob The Builder',
+        ];
+
+        return view('home', ['customer1' => $customers]);
     }
 }

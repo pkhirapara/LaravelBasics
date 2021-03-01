@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Customer;
 
 class CustomersController extends Controller
 {
     public function index()
     {
 
-        $customers = [
-            'John Doe',
-            'Jane Doe',
-            'Bob The Builder',
-        ];
+        $customers = Customer::all();
 
-        return view('internals.customers', ['customer1' => $customers]);
+        return view('internals.customers', [
+            'customer1' => $customers]);
     }
 }

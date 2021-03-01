@@ -21,4 +21,5 @@ Route::view('about', 'about');
 Route::view('contact', 'contact');
 
 Route::get('customers', [CustomersController::class, 'index']);
+Route::post('customer', [CustomersController::class, 'store']);
 

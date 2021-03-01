@@ -15,4 +15,13 @@ class CustomersController extends Controller
         return view('internals.customers', [
             'customer1' => $customers]);
     }
+
+    public function store()
+    {
+        $customer = new Customer();
+        $customer->name = request('name');
+        $customer->save();
+
+        return back();
+    }
 }

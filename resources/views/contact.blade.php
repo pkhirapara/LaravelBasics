@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <h1>Welcome to Laravel</h1>
+    <h1>Contact Us</h1>
 
 @endsection

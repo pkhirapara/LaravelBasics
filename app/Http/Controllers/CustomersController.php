@@ -10,12 +10,9 @@ class CustomersController extends Controller
 {
     public function index()
     {
-        $activeCustomers = Customer::active()->get();
-        $inactiveCustomers = Customer::inactive()->get();
+        $customers = Customer::all();
 
-        $companies = Company::all();
-
-        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers', 'companies'));
+        return view('customers.index', compact('customers'));
     }
 
     public function store()
@@ -30,6 +27,14 @@ class CustomersController extends Controller
 
         Customer::create($data);
 
-        return back();
+        return redirect('customers');
+    }
+
+    public function create()
+    {
+
+        $companies = Company::all();
+ 
+        return view('customers.create', compact('companies'));
     }
 }

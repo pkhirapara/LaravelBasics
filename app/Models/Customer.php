@@ -12,11 +12,21 @@ class Customer extends Model
 
     //guarded example
     protected $guarded = [];
+
+    // Eloquent Accessors
+    public function getActiveAttribute($attribute)
+    {
+        return [
+            0 => 'Inactive',
+            1 => 'Active',
+        ][$attribute];
+    } 
     
     public function scopeActive($query)
     {
         return $query->where('active', 1);
     }
+
     public function scopeInactive($query)
     {
         return $query->where('active', 0);
@@ -26,4 +36,5 @@ class Customer extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
 }

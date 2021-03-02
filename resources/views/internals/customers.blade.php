@@ -34,6 +34,15 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="company_id">Company</label>
+                    <select name="company_id" id="company_id" class="form-control">
+                        @foreach ($companies as $company)
+                            <option value="{{ $company->id }}">{{ $company->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Add Customer</button>
             </from>
         </div>
@@ -46,7 +55,7 @@
             <h3>Active Customers</h3>
             <ul>
                 @foreach($activeCustomers as $activeCustomers)
-                    <li>{{ $activeCustomers->name }} <span class="muted">({{ $activeCustomers->email }})</span></li>
+                    <li>{{ $activeCustomers->name }} <span class="muted">({{ $activeCustomers->company->name }})</span></li>
                 @endforeach
             </ul>
         </div>
@@ -54,9 +63,25 @@
             <h3>Inactive Customers</h3>
             <ul>
                 @foreach($inactiveCustomers as $inactiveCustomers)
-                    <li>{{ $inactiveCustomers->name }} <span class="muted">({{ $inactiveCustomers->email }})</span></li>
+                    <li>{{ $inactiveCustomers->name }} <span class="muted">({{ $inactiveCustomers->company->name }})</span></li>
                 @endforeach
             </ul>
         </div>
     </div>
+
+    
+    <div class="row">
+        <div class="col-12">
+            @foreach($companies as $company)
+                <h3>{{  $company->name }} </h3>
+
+                <ul>
+                    @foreach($company->customers as $customer)
+                        <li>{{ $customer->name }}</li>
+                    @endforeach
+                </ul>
+            @endforeach
+        </div>
+    </div>
+    
 @endsection

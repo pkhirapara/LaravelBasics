@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\ContactFormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,6 @@ Route::view('/', 'home');
 
 Route::view('about', 'about');
 
-Route::view('contact', 'contact');
-
 Route::get('customers', [CustomersController::class, 'index']);
 Route::get('customers/create', [CustomersController::class, 'create']);
 Route::post('customers', [CustomersController::class, 'store']);
@@ -28,5 +27,8 @@ Route::get('customers/{customer}', [CustomersController::class, 'show']);
 Route::get('customers/{customer}/edit', [CustomersController::class, 'edit']);
 Route::put('customers/{customer}', [CustomersController::class, 'update']);
 Route::delete('customers/{customer}', [CustomersController::class, 'destroy']);
+
+Route::get('contact', [ContactFormController::class, 'create']);
+Route::post('contact', [ContactFormController::class, 'store']);
 
 

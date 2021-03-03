@@ -36,5 +36,18 @@ class CustomersController extends Controller
         $companies = Company::all();
  
         return view('customers.create', compact('companies'));
+
+    }
+
+    public function show(Customer $customer)
+    {
+        //route model binding example we do not need to write below line
+        //if we pass Customer in argument above
+        //Laravel does it for us automatically
+        
+        //$customer = Customer::where('id', $customer)->firstOrFail();
+
+        return view('customers.show', compact('customer'));
+        
     }
 }

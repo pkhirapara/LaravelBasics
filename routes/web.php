@@ -25,5 +25,7 @@ Route::get('customers/create', [CustomersController::class, 'create']);
 Route::post('customers', [CustomersController::class, 'store']);
 
 Route::get('customers/{customer}', [CustomersController::class, 'show']);
+Route::get('customers/{customer}/edit', [CustomersController::class, 'edit']);
+Route::put('customers/{customer}', [CustomersController::class, 'update']);
 
 

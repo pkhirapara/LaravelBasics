@@ -9,7 +9,7 @@ class TestingVueController extends Controller
     public function index()
     {
         return[
-            'name' => 'ANother Name',
+            'name' => 'Another Name',
         ];
     }
 }

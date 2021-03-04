@@ -25,11 +25,11 @@ Route::post('customers', [CustomersController::class, 'store']);
 
 Route::get('customers/{customer}', [CustomersController::class, 'show']);
 Route::get('customers/{customer}/edit', [CustomersController::class, 'edit']);
-Route::put('customers/{customer}', [CustomersController::class, 'update']);
+Route::put('customers/{customer}', [CustomersController::class, 'update'])->name('customer.update');
 Route::delete('customers/{customer}', [CustomersController::class, 'destroy']);
 
-Route::get('contact', [ContactFormController::class, 'create']);
-Route::post('contact', [ContactFormController::class, 'store']);
+Route::get('contact', [ContactFormController::class, 'create'])->name('contact.create');
+Route::post('contact', [ContactFormController::class, 'store'])->name('contact.store');
 
 
 

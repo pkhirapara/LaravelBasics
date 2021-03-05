@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+    use HasFactory;
+
     //fillable example
     //protected $fillable = ['name', 'email', 'active'];
 

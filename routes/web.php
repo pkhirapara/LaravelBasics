@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\ContactFormController;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\Post;
 
 /*
@@ -22,19 +23,15 @@ Route::view('/home', 'home');
 
 Route::get('/', function () {
 
-    $user = User::factory()->create();
+    $user = User::first();
 
-    $user->posts()->create([
-        'title' => 'title here',
-        'body' => 'body here',
-    ]);
+    $user->roles()->sync([1, 3, 5]);
+    //$user->roles()->syncWithoutDetaching([3]);
 
-    $user->posts->first()->title = 'New Title';
-    $user->posts->first()->body = 'New Better Body';
+    //another way
+    //$role = Role::find(4);
+    //role->users()->sync([1]);
 
-    $user->push();
-
-    return $user->posts;
 
 });
 

@@ -23,14 +23,24 @@ Route::view('/home', 'home');
 
 Route::get('/', function () {
 
+    
     $user = User::first();
 
-    $user->roles()->sync([1, 3, 5]);
+    $user->roles()->sync([
+        1 => [
+            'name' => 'victor'
+        ]
+    ]);
+
+    //dd($user->roles->first()->pivot->name);
+
+
     //$user->roles()->syncWithoutDetaching([3]);
 
     //another way
     //$role = Role::find(4);
-    //role->users()->sync([1]);
+
+    //$role->users()->sync([5]);
 
 
 });

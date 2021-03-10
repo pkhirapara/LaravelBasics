@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\ContactFormController;
 use App\Models\User;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +17,24 @@ use App\Models\User;
 |
 */
 
+Route::view('/home', 'home');
+
+
 Route::get('/', function () {
 
-    //$user = factory(\App\User::class)->create();
     $user = User::factory()->create();
 
-    $user->phone()->create([
-        'phone' => '222-333-4567',
+    $user->posts()->create([
+        'title' => 'title here',
+        'body' => 'body here',
     ]);
+
+    $user->posts->first()->title = 'New Title';
+    $user->posts->first()->body = 'New Better Body';
+
+    $user->push();
+
+    return $user->posts;
 
 });
 

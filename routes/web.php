@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\ContactFormController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,17 @@ use App\Http\Controllers\ContactFormController;
 |
 */
 
-Route::view('/', 'home');
+Route::get('/', function () {
+
+    //$user = factory(\App\User::class)->create();
+    $user = User::factory()->create();
+
+    $user->phone()->create([
+        'phone' => '222-333-4567',
+    ]);
+
+});
+
 
 Route::view('about', 'about');
 

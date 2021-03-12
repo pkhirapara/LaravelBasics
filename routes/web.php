@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Post;
@@ -21,16 +22,7 @@ use App\Models\Post;
 Route::view('/home', 'home');
 
 
-Route::get('/', function () {
-
-    
-    $user = User::first();
-
-    $user->roles()->sync([
-        1 => [
-            'name' => 'victor'
-        ]
-    ]);
+Route::view('/', 'welcome');
 
     //dd($user->roles->first()->pivot->name);
 
@@ -41,10 +33,6 @@ Route::get('/', function () {
     //$role = Role::find(4);
 
     //$role->users()->sync([5]);
-
-
-});
-
 
 Route::view('about', 'about');
 
@@ -64,16 +52,4 @@ Route::post('contact', [ContactFormController::class, 'store'])->name('contact.s
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
